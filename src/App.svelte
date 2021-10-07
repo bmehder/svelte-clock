@@ -11,7 +11,12 @@
     const minsDegrees = (mins / 60) * 360 + (seconds / 60) * 6 + 90
     const hourDegrees = (hour / 12) * 360 + (mins / 60) * 30 + 90
 
-    seconds === 0 && (secondHandEl.style.transition = 'none')
+    if (seconds === 0) {
+      secondHandEl.style.transition = 'none 0.05s'
+    } else {
+      secondHandEl.style.transition =
+        'all 0.05s cubic-bezier(0.1, 2.7, 0.58, 1)'
+    }
 
     secondHandEl.style.transform = `rotate(${secondsDegrees}deg)`
     minsHandEl.style.transform = `rotate(${minsDegrees}deg)`
